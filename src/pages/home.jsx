@@ -1,4 +1,5 @@
 import { NavLink, useOutletContext, useNavigate } from "react-router"
+import { factions } from "../Data/Characters/characterManager";
 import '../App.css'
 
 function App() {
@@ -6,7 +7,6 @@ function App() {
         const navigate = useNavigate();
         const { setTeamPlayer, setBenchPlayer, selectedFaction, setSelectedFaction, setSelectedEnemyFaction, 
                 amountOfFactions, setAmountOfFactions, ConfirmFaction } = useOutletContext();
-        const factions = ["human", "orc", "beast", "undead", "dragon", "elf", "dwarf"]
 
         function selectFaction(faction){
                 if(selectedFaction.includes(faction)) {return}

@@ -1,4 +1,4 @@
-import { getCharacterById, getEvoCharacterById } from '../../Data/data.js'
+import { getCharacterById, getEvoCharacterById, factions } from '../../Data/Characters/characterManager'
 
 export async function battleMechanics(
     playerTeam,
@@ -173,8 +173,6 @@ export function createEnemyTeam(wave, enemyFaction) {
 }
 
 export function getEnemyFaction(selectedFaction) {
-
-    const factions = ["human", "orc", "beast", "undead", "elf", "dwarf"];
 
     const availableFactions = factions.filter(
         faction => !selectedFaction.includes(faction)

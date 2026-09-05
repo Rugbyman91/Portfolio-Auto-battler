@@ -1,7 +1,7 @@
 import React from 'react';
 import { useOutletContext, Link } from 'react-router'
 import { createSlots } from '../components/Functions/Functions'
-import { getCharacterById, getEvoCharacterById, baseCharacters } from '../Data/data.js'
+import { getCharacterById, getEvoCharacterById, baseCharacters } from '../Data/Characters/characterManager'
 
 export default function Organiser(){
 
