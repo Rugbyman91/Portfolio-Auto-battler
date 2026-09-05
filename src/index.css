@@ -1,0 +1,485 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.indent {
+  margin-left: 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  height: 70px;
+  background-color: gray;
+
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header img {
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 7px;
+}
+
+header h1 {
+  margin: 0 0 0 10px;
+  font-size: 20px;
+}
+
+header nav {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+}
+
+header nav button {
+  height: 30px;
+  width: 60px;
+}
+
+header nav a {
+  background-color: white;
+  color: rgb(65, 63, 63);
+
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 40px;
+  width: 80px;
+
+  border-radius: 5px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  display: flex;
+  justify-content: center;
+
+  background-color: black;
+  color: bisque;
+}
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home-background{
+  margin-left: 20px;
+}
+
+/* =========================
+   ORGANISER CONTAINER
+========================= */
+
+.character-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20px;
+
+  width: min(900px, 90%);
+  margin: 25px auto;
+  padding: 25px;
+
+  background-color: blue;
+  border-radius: 25px;
+}
+
+.start-battle{
+  background-color: purple;
+  color: yellow;
+  font-weight: bold;
+  font-size: larger;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: fit-content;
+  min-width: 100px;
+  height: 45px;
+
+  border-radius: 5px;
+  border: 2px solid yellow;
+  padding: 0 20px;
+
+  white-space: nowrap;
+}
+
+.wallet {
+  position: absolute;
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wallet img {
+  width: 20px;
+  max-height: 20px;
+}
+
+/* =========================
+   SHOP + BENCH
+========================= */
+
+.character-options {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 25px;
+
+  width: 100%;
+  height: 115px;
+
+  background-color: gray;
+  border-radius: 20px;
+}
+
+.character-options img {
+  height: 25px;
+  cursor: pointer;
+}
+
+
+/* =========================
+   PLAYER BOARD
+========================= */
+
+.player-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 230px;
+
+  background-color: gray;
+  border-radius: 25px;
+}
+
+
+/* =========================
+   CHARACTER GRID
+========================= */
+
+.character-board {
+  display: grid;
+
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(2, 100px);
+
+  column-gap: 25px;
+  row-gap: 15px;
+
+  justify-content: center;
+  align-content: center;
+}
+
+
+/* =========================
+   CHARACTER SLOT
+========================= */
+
+.character-slot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 100px;
+
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.character-slot.evolved {
+    background: linear-gradient(135deg, #fff4a3, #ffd700, #b8860b);
+    border: 2px solid #fff1a8;
+    box-shadow:
+        0 0 6px rgba(255, 215, 0, 0.8),
+        inset 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.character-slot.normal{
+  background: linear-gradient(135deg, #f5faff, #dceeff, #c5ddf5);
+    border: 2px solid #8eb8dc;
+    border-radius: 8px;
+
+    box-shadow:
+        0 1px 4px rgba(40, 90, 130, 0.25),
+        inset 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================
+   CHARACTER NAME
+========================= */
+
+.character-slot h4 {
+  margin: 0;
+
+  font-size: 11px;
+  text-align: center;
+
+  white-space: nowrap;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================
+   CHARACTER IMAGE
+========================= */
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  height: 60px;
+  max-width: 70px;
+
+  object-fit: cover;
+  display: block;
+}
+
+
+/* =========================
+   CHARACTER STATS
+========================= */
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  font-size: 11px;
+}
+
+.hp {
+  background-image: url('/images/heart.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  color: greenyellow;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gold{
+  background-image: url('/images/gold.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  color: black;
+
+  width: 18px;
+  height: 18px;
+  margin-top: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.strength{
+  background-image: url('/images/shield.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  color: black;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* =========================
+   FACTION HOME PAGE
+========================= */
+
+.faction-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-top: 120px;
+  gap: 50px;
+}
+
+.faction-navigation button {
+  background-color: blue;
+
+  padding: 20px 40px;
+
+  color: rgb(248, 213, 14);
+  font-weight: bold;
+  font-size: larger;
+
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 45px;
+  width: 100px;
+
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.faction-amount{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 30px;
+}
+
+.start-run {
+    background-color: purple;
+    color: yellow;
+    font-weight: bold;
+    font-size: larger;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+    min-width: 160px;
+    height: 65px;
+
+    border-radius: 5px;
+    border: 2px solid yellow;
+    padding: 0 20px;
+
+    white-space: nowrap;
+
+    margin: 80px auto;
+}
+
+/* =========================
+   CHARACTER DETAIL OVERLAY
+========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  z-index: 1000;
+}
+
+
+.character-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: min(500px, 90%);
+  max-height: 90vh;
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  background-color: white;
+  border-radius: 15px;
+
+  overflow: hidden;
+}
+
+.character-detail h2 {
+  margin-top: 0;
+}
+
+.character-detail img {
+  max-width: 100%;
+  max-height: 500px;
+
+  object-fit: contain;
+}
+
+.character-detail p{
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.character-detail.evolved {
+    background: linear-gradient(135deg, #fff4a3, #ffd700, #b8860b);
+    border: 2px solid #fff1a8;
+    box-shadow:
+        0 0 6px rgba(255, 215, 0, 0.8),
+        inset 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.character-detail.normal{
+  background: linear-gradient(135deg, #f5faff, #dceeff, #c5ddf5);
+    border: 2px solid #8eb8dc;
+    border-radius: 8px;
+
+    box-shadow:
+        0 1px 4px rgba(40, 90, 130, 0.25),
+        inset 0 0 5px rgba(255, 255, 255, 0.7);
+}
