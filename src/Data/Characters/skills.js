@@ -1,16 +1,49 @@
 export const SKILLS = {
-  taunt: {
-    name: "Taunt",
-    description: "Forces enemies to attack this unit.",
+  shield: {
+    name: "Shield",
+    description: "Negates the damage of the next incoming attack.",
   },
 
-  piercingShot: {
-    name: "Piercing Shot",
-    description: "Deals damage to the target and the unit behind it.",
+  stabthrough: {
+    name: "Stab Through",
+    description:
+      "Also hit the enemy behind (or in front) of the target with reduced damage.",
   },
 
-  fireball: {
-    name: "Fireball",
-    description: "Deals damage to multiple enemies.",
+  bomb: {
+    name: "Bomb attack",
+    description: "Deals damage to all enemies next to target.",
+  },
+
+  push: {
+    name: "Push",
+    description: "Swaps position of the target with the enemy behind it",
+  },
+
+  backstab: {
+    name: "Backstab",
+    description:
+      "Prior to battle start, hit a random enemy in the backrow for half strength",
+  },
+
+  suckerpunch: {
+    name: "Suckerpunch",
+    description:
+      "Prior to battle start, hit a random enemy in the frontrow with reduced strength.",
+  },
+
+  summon: {
+    name: "Summon",
+    description: "Summon a minion on the battlefield.",
+  },
+
+  poison: {
+    name: "Poison",
+    description: "Deals damage to the target in between turns.",
+  },
+
+  thorns: {
+    name: "Thorns",
+    description: "When attacked, deal damage to the enemy.",
   },
 };
