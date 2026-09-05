@@ -9,8 +9,9 @@ function App() {
                 amountOfFactions, setAmountOfFactions, ConfirmFaction } = useOutletContext();
 
         function selectFaction(faction){
-                if(selectedFaction.includes(faction)) {return}
-                const newFaction = [...selectedFaction, faction]
+                let newFaction = null
+                if(selectedFaction.includes(faction)) newFaction = selectedFaction.filter(item => (item !== faction))
+                else newFaction = [...selectedFaction, faction]
                 if(newFaction.length <= amountOfFactions) { setSelectedFaction(newFaction)}
         }
         function lowerAmountOfFactions(){
@@ -32,8 +33,9 @@ function App() {
                                 <span>{selectedFaction.length} / {amountOfFactions}</span>
                                 <button onClick={() => amountOfFactions < 5 ? setAmountOfFactions(amountOfFactions + 1) : null}>+</button>
                         </div>
-                        <p>Select {amountOfFactions} factions to start your run.</p>
-                        <p>{selectedFaction.length > 0 ? selectedFaction.join(", ") : ""}</p>
+                        <p>
+                                Select {amountOfFactions} factions to start your run{selectedFaction.length < 1 ? "." : `: ${selectedFaction.join(", ")}`}
+                        </p>
                 </div>
                 <nav className="faction-navigation">
 
