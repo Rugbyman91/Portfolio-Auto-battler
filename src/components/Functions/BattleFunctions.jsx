@@ -5,17 +5,22 @@ export async function battleMechanics(
     enemyTeam,
     setPlayerTeam,
     setEnemyTeam,
+    animateAttack,
+    animateHit,
     isCancelled
 ) {
     let indexPlayer = 0;
     let indexEnemy = 0;
 
     do {
-        indexPlayer = attack(
+        indexPlayer = await attack(
             playerTeam,
             enemyTeam,
             indexPlayer,
-            setEnemyTeam
+            setEnemyTeam,
+            animateAttack,
+            animateHit,
+            "team"
         );
 
         if (!enemyTeam.some(character => character !== null)) {
@@ -25,11 +30,14 @@ export async function battleMechanics(
         await PauseBattle()
         if (isCancelled()) { return "cancelled" }
 
-        indexEnemy = attack(
+        indexEnemy = await attack(
             enemyTeam,
             playerTeam,
             indexEnemy,
-            setPlayerTeam
+            setPlayerTeam,
+            animateAttack,
+            animateHit,
+            "enemy"
         );
 
         if (!playerTeam.some(character => character !== null)) {
@@ -42,11 +50,14 @@ export async function battleMechanics(
     } while (true);
 }
 
-function attack(
+async function attack(
     attackerTeam,
     defenderTeam,
     attackerIndex,
-    setDefenderTeam
+    setDefenderTeam,
+    animateAttack,
+    animateHit,
+    attackerSource
 ) {
     const actualAttackerIndex = selectAttacker(
         attackerTeam,
@@ -63,6 +74,17 @@ function attack(
         return 0;
     }
 
+    await animateAttack(
+        actualAttackerIndex,
+        defenderIndex,
+        attackerSource
+    );
+
+    await animateHit(
+        defenderIndex,
+        attackerSource
+    );
+
     const attacker = attackerTeam[actualAttackerIndex];
     const defender = defenderTeam[defenderIndex];
 
@@ -72,11 +94,11 @@ function attack(
         defenderTeam[defenderIndex] = null;
     }
 
-    // React vertellen dat de array veranderd is
     setDefenderTeam([...defenderTeam]);
 
     return actualAttackerIndex + 1;
 }
+
 function selectAttacker(team, startIndex) {
 
     // Zoek van huidige positie tot einde

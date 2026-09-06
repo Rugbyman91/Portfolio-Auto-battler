@@ -16,6 +16,8 @@ export function createSlots(amount, team, source, handleDragStart, handleDrop, s
 
                         <div
                             className="card"
+                            data-index={index}
+                            data-source={source}
                             draggable
                             onDragStart={() =>
                                 handleDragStart(index, source)
@@ -41,20 +43,26 @@ export function createSlots(amount, team, source, handleDragStart, handleDrop, s
         )
     })
 }
-export function createBattleSlots(amount, team, source) {
+
+export function createBattleSlots(amount, team, source, indexes) {
     return Array.from({ length: amount }, (_, index) => {
         const character = team[index]
+        const originalIndex = indexes[index]
 
         return (
             <div
                 key={`${index}-${source}`}
                 className="character-slot"
+                data-index={originalIndex}
+                data-source={source}
             >
                 {character && (
                     <>
                         <h4>{character.name}</h4>
 
-                        <div className="card">
+                        <div
+                            className="card"
+                        >
                             <img
                                 src={character.image}
                                 alt={character.name}

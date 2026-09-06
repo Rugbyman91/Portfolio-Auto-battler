@@ -5,7 +5,7 @@ import {
   classStats,
   raceModifiers,
   characterDefenitions,
-} from "../Characters/testData";
+} from "../Characters/data";
 
 function generatedStats(className, race, evolved) {
   const classData = classStats[className];
@@ -82,3 +82,26 @@ export function getEvoCharacterById(id) {
 
   return character ? { ...character } : null;
 }
+
+const imageCache = {};
+
+function preloadImages() {
+  characterDefenitions.forEach((character) => {
+    const images = [
+      character.image,
+      character.detailImage,
+      character.evoImage,
+      character.evoDetailImage,
+    ];
+
+    images.forEach((src) => {
+      if (!src) return;
+
+      const img = new Image();
+      img.src = src;
+      imageCache[src] = img;
+    });
+  });
+}
+
+preloadImages();
