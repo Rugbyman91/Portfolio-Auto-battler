@@ -46,4 +46,9 @@ export const SKILLS = {
     name: "Thorns",
     description: "When attacked, deal damage to the enemy.",
   },
+
+  taunt: {
+    name: "Taunt",
+    description: "Enemies are forced to target taunt user",
+  },
 };

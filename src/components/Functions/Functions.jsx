@@ -48,11 +48,13 @@ export function createBattleSlots(amount, team, source, indexes) {
     return Array.from({ length: amount }, (_, index) => {
         const character = team[index]
         const originalIndex = indexes[index]
+        console.log(character?.name, character?.evolved)
 
         return (
             <div
                 key={`${index}-${source}`}
-                className="character-slot"
+                className={`character-slot ${
+                character? character.evolved ? "evolved" : "normal" : ""}`}
                 data-index={originalIndex}
                 data-source={source}
             >

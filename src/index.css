@@ -531,3 +531,16 @@ footer {
     animation: attack 0.4s ease-in-out;
     z-index: 10;
 }
+
+.battle-speed{
+  display:flex;
+  gap: 20px;
+  margin-left: auto;
+}
+.battle-speed button{
+  padding: 5px 10px;
+  background-color: rgb(148, 114, 3);
+  color: black;
+
+  border-radius: 6px;
+}

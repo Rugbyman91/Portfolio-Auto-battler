@@ -1,8 +1,9 @@
 import React from 'react';
 import { createBattleSlots } from '../components/Functions/Functions'
 import { useOutletContext, useNavigate } from 'react-router'
-import { waves } from '../Data/waveManager.js'
+import { getWave } from '../Data/waveManager.js'
 import { battleMechanics, createEnemyTeam, createBattleTeam } from '../components/Functions/BattleFunctions.jsx';
+import { animateAttack, animateHit } from '../components/Functions/BattleAnimations.jsx'
 
 export default function Battle(){
 
@@ -15,69 +16,19 @@ export default function Battle(){
         setWave,
         resetGame
     } = useOutletContext()
+    const currentWave = getWave(wave, selectedEnemyFaction)
     const battleBoardRef = React.useRef(null)
     const [battleTeam, setBattleTeam] = React.useState(() => {
         const newTeam = createBattleTeam(teamPlayer)
         return newTeam
     })
     const [enemyTeam, setEnemyTeam] = React.useState(() => {
-        const newTeam = createEnemyTeam(
-            waves[wave - 1],
-            selectedEnemyFaction
-        )
-        return newTeam
+        return createEnemyTeam(currentWave)
     })
+    const battleSpeed = React.useRef(1)
     
-    async function animateAttack(attackerIndex, defenderIndex, source) {
-
-        const attacker = battleBoardRef.current.querySelector(
-            `[data-index="${attackerIndex}"][data-source="${source}"]`
-        )
-
-        const defenderSource = source === "team" ? "enemy" : "team"
-
-        const defender = battleBoardRef.current.querySelector(
-            `[data-index="${defenderIndex}"][data-source="${defenderSource}"]`
-        )
-        if (!attacker || !defender) {
-            return
-        }
-
-        const attackerRect = attacker.getBoundingClientRect()
-        const defenderRect = defender.getBoundingClientRect()
-
-        const dx = (defenderRect.left - attackerRect.left) * 0.90
-        const dy = (defenderRect.top - attackerRect.top) * 0.90
-
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90
-
-        attacker.style.setProperty("--move-x", `${dx}px`)
-        attacker.style.setProperty("--move-y", `${dy}px`)
-        attacker.style.setProperty("--angle", `${angle}deg`)
-
-        attacker.classList.add("attacking")
-
-        await new Promise(resolve => {
-            setTimeout(resolve, 400)
-        })
-
-        attacker.classList.remove("attacking")
-    }
-    async function animateHit(defenderIndex, source) {
-
-        const defenderSource = source === "team" ? "enemy" : "team"
-
-        const defender = battleBoardRef.current.querySelector(
-            `[data-index="${defenderIndex}"][data-source="${defenderSource}"]`
-        )
-
-        defender.classList.add("hit")
-
-        await new Promise(resolve => {
-            setTimeout(resolve, 300)
-        })
-
-        defender.classList.remove("hit")
+    function changeSpeed(speed) {
+        battleSpeed.current = speed
     }
 
     React.useEffect(() => {
@@ -86,7 +37,7 @@ export default function Battle(){
         const sleep = ms => new Promise(r => setTimeout(r, ms))
 
         async function startBattle() {
-            await sleep(2000)
+            await sleep(1500)
             if (cancelled) return
 
             const result = await battleMechanics(
@@ -96,18 +47,20 @@ export default function Battle(){
                 setEnemyTeam,
                 animateAttack,
                 animateHit,
+                battleBoardRef,
+                battleSpeed,
                 () => cancelled
             )
             if (cancelled) return
 
             if (result === "lose") {
-                resetGame();
                 navigate("/");
+                resetGame();
                 return
             }
 
             if (result === "win") {
-                const reward = waves[wave - 1].gold
+                const reward = currentWave.gold
 
                 setWallet(prev => prev + reward)
                 setWave(prev => prev + 1)
@@ -154,7 +107,11 @@ export default function Battle(){
                         )}
                     </div>
                 </div>
-
+                <div className='battle-speed'>
+                    <button onClick={() => changeSpeed(1)}>1x</button>
+                    <button onClick={() => changeSpeed(0.5)}>2x</button>
+                    <button onClick={() => changeSpeed(0.33)}>3x</button>
+                </div>
             </div>
         </>
     )

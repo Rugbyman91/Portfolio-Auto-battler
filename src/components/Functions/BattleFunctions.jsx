@@ -7,6 +7,8 @@ export async function battleMechanics(
     setEnemyTeam,
     animateAttack,
     animateHit,
+    battleBoardRef,
+    battleSpeed,
     isCancelled
 ) {
     let indexPlayer = 0;
@@ -20,14 +22,16 @@ export async function battleMechanics(
             setEnemyTeam,
             animateAttack,
             animateHit,
-            "team"
+            "team",
+            battleBoardRef,
+            battleSpeed
         );
 
         if (!enemyTeam.some(character => character !== null)) {
             return "win";
         }
 
-        await PauseBattle()
+        await PauseBattle(battleSpeed)
         if (isCancelled()) { return "cancelled" }
 
         indexEnemy = await attack(
@@ -37,14 +41,16 @@ export async function battleMechanics(
             setPlayerTeam,
             animateAttack,
             animateHit,
-            "enemy"
+            "enemy",
+            battleBoardRef,
+            battleSpeed
         );
 
         if (!playerTeam.some(character => character !== null)) {
             return "lose";
         }
 
-        await PauseBattle()
+        await PauseBattle(battleSpeed)
         if (isCancelled()) { return "cancelled" }
 
     } while (true);
@@ -57,7 +63,9 @@ async function attack(
     setDefenderTeam,
     animateAttack,
     animateHit,
-    attackerSource
+    attackerSource,
+    battleBoardRef,
+    battleSpeed
 ) {
     const actualAttackerIndex = selectAttacker(
         attackerTeam,
@@ -77,12 +85,16 @@ async function attack(
     await animateAttack(
         actualAttackerIndex,
         defenderIndex,
-        attackerSource
+        attackerSource,
+        battleBoardRef,
+        battleSpeed
     );
 
     await animateHit(
         defenderIndex,
-        attackerSource
+        attackerSource,
+        battleBoardRef,
+        battleSpeed
     );
 
     const attacker = attackerTeam[actualAttackerIndex];
@@ -165,9 +177,10 @@ function selectDefender(team) {
     return livingBackrow[randomIndex];
 }
 
-async function PauseBattle() {
+async function PauseBattle(battleSpeed) {
+    const speed = battleSpeed.current;
     const sleep = ms => new Promise(r => setTimeout(r, ms))
-    await sleep(1000)
+    await sleep(1000 * speed)
 }
 const factionOffsets = {
     human: 0,
@@ -179,16 +192,13 @@ const factionOffsets = {
     dwarf: 48
 };
 
-export function createEnemyTeam(wave, enemyFaction) {
-    const offset = factionOffsets[enemyFaction];
+export function createEnemyTeam(wave) {
     const enemyTeam = Array(8).fill(null);
 
     wave.enemies.forEach(enemy => {
-        const characterId = enemy.character + offset;
-
         enemyTeam[enemy.position] = enemy.evolved
-            ? getEvoCharacterById(characterId)
-            : getCharacterById(characterId);
+            ? getEvoCharacterById(enemy.character)
+            : getCharacterById(enemy.character);
     });
 
     return enemyTeam;

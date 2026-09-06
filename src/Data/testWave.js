@@ -24,7 +24,7 @@ function getCharacterId(faction, className) {
 
   if (offset === undefined || classIndex === -1) {
     throw new Error(
-      `Cannot find character id for faction "${faction}" / class "${className}"`,
+      `Cannot resolve character id for faction "${faction}" / class "${className}"`,
     );
   }
   return offset + classIndex + 1;
@@ -204,7 +204,7 @@ export function getWave(waveId, faction) {
 
   blueprint.front.forEach((className, index) => {
     enemies.push({
-      character: getCharacterId(faction, className),
+      character: resolveCharacterId(faction, className),
       position: index,
       evolved: index < blueprint.evolvedFront,
     });
@@ -212,7 +212,7 @@ export function getWave(waveId, faction) {
 
   blueprint.back.forEach((className, index) => {
     enemies.push({
-      character: getCharacterId(faction, className),
+      character: resolveCharacterId(faction, className),
       position: 4 + index,
       evolved: index < blueprint.evolvedBack,
     });
