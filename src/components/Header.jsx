@@ -9,8 +9,7 @@ export default function Header({ resetGame }){
 
     return(
         <header>
-            <img src="/images/logo.jpg" alt="Test" />
-            <h1>Auto-Bataille</h1>
+            <h1 className="game-title">Hold the line</h1>
             <nav>
                 <NavLink 
                     to="/" className="nav-button"

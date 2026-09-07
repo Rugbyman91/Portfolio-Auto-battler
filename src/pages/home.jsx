@@ -23,19 +23,31 @@ function App() {
                         setSelectedFaction(newFaction)
                 }
         }  
+        function chosenFactionElements() {
+                return selectedFaction.map(element => (
+                        <span 
+                                className={element} key={element}
+                                onClick={() => selectFaction(element)}>
+                        {element}
+                        </span>
+                ));
+                }
         return (
         <>
         <div className="home-background">
-                        <h1>Home page</h1>
-                        <h2>Choose your factions</h2>
-                        <div className="faction-amount">
-                                <button onClick={() => lowerAmountOfFactions()}>-</button>
-                                <span>{selectedFaction.length} / {amountOfFactions}</span>
-                                <button onClick={() => amountOfFactions < 5 ? setAmountOfFactions(amountOfFactions + 1) : null}>+</button>
-                        </div>
+                <h1>Select your factions</h1>
+                <div className="chosen-faction-container">
                         <p>
-                                Select {amountOfFactions} factions to start your run{selectedFaction.length < 1 ? "." : `: ${selectedFaction.join(", ")}`}
+                        Select {amountOfFactions} factions to start your run{selectedFaction.length < 1 ? "." : ":"}
                         </p>
+                        {selectedFaction.length > 0 && chosenFactionElements()}
+                </div>
+                <div className="faction-amount">
+                        <button>-</button>
+                        <span>{selectedFaction.length} / {amountOfFactions}</span>
+                        <button onClick={() => amountOfFactions < 5 ? setAmountOfFactions(amountOfFactions + 1) : null}>+</button>
+                </div>
+                        
                 </div>
                 <nav className="faction-navigation">
 

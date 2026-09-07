@@ -45,16 +45,12 @@ header {
   padding: 10px clamp(10px, 3vw, 20px);
 }
 
-header img {
-  height: clamp(30px, 5vw, 40px);
-  margin-left: 10px;
-  border-radius: 7px;
-}
-
 header h1 {
   margin: 0 0 0 10px;
   font-size: clamp(16px, 2.5vw, 20px);
   white-space: nowrap;
+  text-decoration: underline;
+  font-size: 800;
 }
 
 header nav {
@@ -108,7 +104,13 @@ footer {
 
 .home-background{
   margin-left: clamp(10px, 2vw, 20px);
+  margin-top: 10vh;
 }
+.home-background h1{
+  text-decoration: underline;
+  margin-bottom: 5vh;
+}
+
 
 /* =========================
    ORGANISER CONTAINER
@@ -407,7 +409,7 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
 
-  margin-top: clamp(40px, 10vw, 120px);
+  margin-top: clamp(20px, 5vw, 60px);
   gap: clamp(20px, 4vw, 50px);
   padding: 0 20px;
 }
@@ -438,7 +440,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: clamp(10px, 3vw, 30px);
+  margin-left: clamp(20px, 6vw, 60px);
 }
 
 .start-run {
@@ -463,6 +465,78 @@ footer {
     white-space: nowrap;
 
     margin: clamp(40px, 8vw, 80px) auto;
+}
+
+.faction-amount button{
+  background-color: grey;
+  color: navy;
+  border: #ffd700 solid 1px;
+  font-size: large;
+  border-radius: 10px;
+}
+.faction-amount span{
+  font-weight: bold;
+}
+.chosen-faction-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.chosen-faction-container p{
+  padding: 10px;
+  background-color: rgb(85, 46, 13);
+  color: white;
+  border: #ffd700 solid 1px;
+  border-radius: 8px;
+}
+
+.chosen-faction-container span{
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.human{
+  background-color: rgb(60, 103, 194);
+  border: grey solid 2px;
+  color: #f5dd02;  
+}
+.elf{
+  background-color: green;
+  border: #ffd700 solid 2px;
+  color: rgb(87, 28, 1);  
+}
+.dwarf{
+  background-color: navy;
+  border: #ffd700 solid 2px;
+  color: silver;  
+
+}
+.orc{
+  background-color: rgb(83, 128, 0);
+  border: rgb(170, 29, 11) solid 2px;
+  color: rgb(170, 29, 11);  
+
+}
+.beast{
+  background-color: rgb(117, 44, 11);
+  border: black solid 2px;
+  color: wheat;  
+
+}
+.undead{
+  background-color: grey;
+  border: black solid 2px;
+  color: purple;  
+
+}
+.dragon{
+  background-color: purple;
+  border: silver solid 2px;
+  color: #ffd700;  
+
 }
 
 /* =========================
