@@ -128,8 +128,8 @@ export const characterDefenitions = [
     evoName: "Ogre",
     image: "/cardimages/brute.png",
     detailImage: "/cardimages/brute-full.png",
-    evoImage: "/cardimages/brute.png",
-    evoDetailImage: "/cardimages/brute-full.png",
+    evoImage: "/cardimages/ogre.png",
+    evoDetailImage: "/cardimages/ogre-full.png",
   },
   {
     id: 10,

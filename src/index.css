@@ -2,6 +2,11 @@
    GLOBAL
 ========================= */
 
+:root {
+  --slot-w: clamp(55px, 8vw, 80px);
+  --slot-h: clamp(75px, 10vw, 100px);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -18,10 +23,11 @@ body {
 
 main {
   flex: 1;
+  overflow-x: hidden;
 }
 
 .indent {
-  margin-left: 20px;
+  margin-left: clamp(10px, 2vw, 20px);
 }
 
 /* =========================
@@ -29,34 +35,38 @@ main {
 ========================= */
 
 header {
-  height: 70px;
+  min-height: 70px;
   background-color: gray;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 0 20px;
+  gap: 10px;
+  padding: 10px clamp(10px, 3vw, 20px);
 }
 
 header img {
-  height: 40px;
+  height: clamp(30px, 5vw, 40px);
   margin-left: 10px;
   border-radius: 7px;
 }
 
 header h1 {
   margin: 0 0 0 10px;
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
+  white-space: nowrap;
 }
 
 header nav {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-left: auto;
 }
 
 header nav button {
   height: 30px;
-  width: 60px;
+  min-width: 60px;
 }
 
 header nav a {
@@ -64,7 +74,7 @@ header nav a {
   color: rgb(65, 63, 63);
 
   font-weight: bold;
-  font-size: 16px;
+  font-size: clamp(13px, 1.6vw, 16px);
   text-decoration: none;
 
   display: flex;
@@ -72,9 +82,10 @@ header nav a {
   align-items: center;
 
   height: 40px;
-  width: 80px;
+  padding: 0 16px;
 
   border-radius: 5px;
+  white-space: nowrap;
 }
 
 
@@ -88,6 +99,7 @@ footer {
 
   background-color: black;
   color: bisque;
+  padding: 8px 0;
 }
 
 /* =========================
@@ -95,7 +107,7 @@ footer {
 ========================= */
 
 .home-background{
-  margin-left: 20px;
+  margin-left: clamp(10px, 2vw, 20px);
 }
 
 /* =========================
@@ -107,11 +119,11 @@ footer {
   flex-direction: column;
   align-items: center;
 
-  gap: 20px;
+  gap: clamp(12px, 2vw, 20px);
 
-  width: min(900px, 90%);
-  margin: 25px auto;
-  padding: 25px;
+  width: min(1000px, 94%);
+  margin: clamp(15px, 3vw, 25px) auto;
+  padding: clamp(12px, 3vw, 25px);
 
   background-color: blue;
   border-radius: 25px;
@@ -121,7 +133,7 @@ footer {
   background-color: purple;
   color: yellow;
   font-weight: bold;
-  font-size: larger;
+  font-size: clamp(14px, 2vw, 18px);
   text-decoration: none;
 
   display: flex;
@@ -130,27 +142,59 @@ footer {
 
   width: fit-content;
   min-width: 100px;
-  height: 45px;
+  min-height: 45px;
 
   border-radius: 5px;
   border: 2px solid yellow;
-  padding: 0 20px;
+  padding: 10px clamp(14px, 3vw, 20px);
 
   white-space: nowrap;
 }
 
 .wallet {
   position: absolute;
-  right: 20px;
+  right: clamp(8px, 2vw, 20px);
 
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+
+  font-size: clamp(11px, 1.6vw, 14px);
+  white-space: nowrap;
 }
 
 .wallet img {
-  width: 20px;
+  width: clamp(14px, 2vw, 20px);
   max-height: 20px;
+}
+
+.retry-roll {
+  position: relative;
+}
+
+.retry-roll-price {
+  position: absolute;
+
+  right: -8px;
+  bottom: -8px;
+
+  width: clamp(22px, 4vw, 30px);
+  height: clamp(22px, 4vw, 30px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: clamp(11px, 1.6vw, 14px);
+  z-index: 2;
+
+  background-image: url('/images/gold.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  height: 65%;
+  width: 65%;
 }
 
 /* =========================
@@ -161,20 +205,22 @@ footer {
   position: relative;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 
-  gap: 25px;
+  gap: clamp(12px, 3vw, 25px);
 
   width: 100%;
-  height: 115px;
+  min-height: 115px;
+  padding: 10px clamp(70px, 12vw, 100px) 10px clamp(15px, 3vw, 25px);
 
   background-color: gray;
   border-radius: 20px;
 }
 
 .character-options img {
-  height: 25px;
+  height: clamp(20px, 3vw, 25px);
   cursor: pointer;
 }
 
@@ -189,7 +235,8 @@ footer {
   align-items: center;
 
   width: 100%;
-  height: 230px;
+  min-height: 230px;
+  padding: 10px;
 
   background-color: gray;
   border-radius: 25px;
@@ -203,11 +250,11 @@ footer {
 .character-board {
   display: grid;
 
-  grid-template-columns: repeat(4, 80px);
-  grid-template-rows: repeat(2, 100px);
+  grid-template-columns: repeat(4, var(--slot-w));
+  grid-template-rows: repeat(2, var(--slot-h));
 
-  column-gap: 25px;
-  row-gap: 15px;
+  column-gap: clamp(10px, 3vw, 25px);
+  row-gap: clamp(8px, 2vw, 15px);
 
   justify-content: center;
   align-content: center;
@@ -224,8 +271,9 @@ footer {
     justify-content: center;
     align-items: center;
 
-    width: 70px;
-    height: 100px;
+    width: var(--slot-w);
+    height: var(--slot-h);
+    flex: 0 0 auto;
 
     background-color: white;
     border-radius: 8px;
@@ -258,11 +306,11 @@ footer {
 .character-slot h4 {
   margin: 0;
 
-  font-size: 11px;
+  font-size: clamp(9px, 1.4vw, 11px);
   text-align: center;
 
   white-space: nowrap;
-  max-width: 70px;
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -276,11 +324,12 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .card img {
-  height: 60px;
-  max-width: 70px;
+  height: clamp(45px, 7vw, 60px);
+  max-width: 100%;
 
   object-fit: cover;
   display: block;
@@ -296,7 +345,7 @@ footer {
   justify-content: space-between;
 
   width: 100%;
-  font-size: 11px;
+  font-size: clamp(10px, 1.4vw, 11px);
 }
 
 .hp {
@@ -307,8 +356,8 @@ footer {
 
   color: greenyellow;
 
-  width: 25px;
-  height: 25px;
+  width: clamp(18px, 3vw, 25px);
+  height: clamp(18px, 3vw, 25px);
 
   display: flex;
   justify-content: center;
@@ -323,9 +372,9 @@ footer {
 
   color: black;
 
-  width: 18px;
-  height: 18px;
-  margin-top: 12px;
+  width: clamp(14px, 2.4vw, 18px);
+  height: clamp(14px, 2.4vw, 18px);
+  margin-top: 8px;
 
   display: flex;
   justify-content: center;
@@ -340,8 +389,8 @@ footer {
 
   color: black;
 
-  width: 25px;
-  height: 25px;
+  width: clamp(18px, 3vw, 25px);
+  height: clamp(18px, 3vw, 25px);
 
   display: flex;
   justify-content: center;
@@ -358,18 +407,19 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
 
-  margin-top: 120px;
-  gap: 50px;
+  margin-top: clamp(40px, 10vw, 120px);
+  gap: clamp(20px, 4vw, 50px);
+  padding: 0 20px;
 }
 
 .faction-navigation button {
   background-color: blue;
 
-  padding: 20px 40px;
+  padding: clamp(12px, 2.5vw, 20px) clamp(24px, 5vw, 40px);
 
   color: rgb(248, 213, 14);
   font-weight: bold;
-  font-size: larger;
+  font-size: clamp(14px, 2vw, 18px);
 
   text-decoration: none;
 
@@ -377,8 +427,8 @@ footer {
   justify-content: center;
   align-items: center;
 
-  height: 45px;
-  width: 100px;
+  min-height: 45px;
+  width: fit-content;
 
   border-radius: 5px;
   cursor: pointer;
@@ -388,14 +438,14 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: 30px;
+  margin-left: clamp(10px, 3vw, 30px);
 }
 
 .start-run {
     background-color: purple;
     color: yellow;
     font-weight: bold;
-    font-size: larger;
+    font-size: clamp(14px, 2vw, 18px);
     text-decoration: none;
 
     display: flex;
@@ -404,15 +454,15 @@ footer {
 
     width: fit-content;
     min-width: 160px;
-    height: 65px;
+    min-height: 65px;
 
     border-radius: 5px;
     border: 2px solid yellow;
-    padding: 0 20px;
+    padding: 10px clamp(14px, 3vw, 20px);
 
     white-space: nowrap;
 
-    margin: 80px auto;
+    margin: clamp(40px, 8vw, 80px) auto;
 }
 
 /* =========================
@@ -440,7 +490,7 @@ footer {
 
   width: min(500px, 90%);
   max-height: 90vh;
-  padding: 25px;
+  padding: clamp(15px, 4vw, 25px);
 
   box-sizing: border-box;
 
@@ -450,6 +500,7 @@ footer {
 
 .character-detail h2 {
   margin-top: 0;
+  font-size: clamp(18px, 3vw, 24px);
 }
 
 .character-detail img {
@@ -461,7 +512,7 @@ footer {
 
 .character-detail p{
   margin-top: 10px;
-  font-size: 30px;
+  font-size: clamp(18px, 3vw, 30px);
 }
 
 .character-detail.evolved {
@@ -488,6 +539,7 @@ footer {
 
 .attacking {
     animation: attack 0.4s ease-in-out;
+    z-index: 10;
 }
 
 @keyframes attack {
@@ -527,20 +579,34 @@ footer {
     pointer-events: none;
 }
 
-.attacking {
-    animation: attack 0.4s ease-in-out;
-    z-index: 10;
-}
-
 .battle-speed{
-  display:flex;
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 20px);
   margin-left: auto;
 }
+
 .battle-speed button{
   padding: 5px 10px;
   background-color: rgb(148, 114, 3);
   color: black;
 
   border-radius: 6px;
+}
+
+/* =========================
+   SMALL-SCREEN FALLBACK
+========================= */
+
+@media (max-width: 420px) {
+  .character-options {
+    padding: 10px 12px;
+  }
+
+  .wallet {
+    position: static;
+    order: 99;
+    width: 100%;
+    justify-content: center;
+  }
 }

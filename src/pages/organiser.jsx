@@ -7,9 +7,9 @@ export default function Organiser(){
 
     const { teamPlayer, benchPlayer, setTeamPlayer, setBenchPlayer, selectedFaction, wallet, setWallet, tier, setTier } = useOutletContext();
     const [selectedCharacter, setSelectedCharacter] = React.useState(null)
-
     const [ draggedId, setDraggedId ] = React.useState(null);
     const [ shopCharacters, setShopCharacters] = React.useState([])
+    const [paidReroll, setPaidReroll] = React.useState(false);
     
     function rerollShop() {
         const factionCharacters = baseCharacters.filter(
@@ -23,7 +23,16 @@ export default function Organiser(){
             const randomIndex = Math.floor( Math.random() * factionCharacters.length )
             options.push(factionCharacters[randomIndex])
         }
+        if ( tier < 2 && !options.some(char => char.class === "knight")) { return rerollShop(); }
         setShopCharacters(options)
+    }
+    function rerollTheShop(){
+        if(wallet > 0){    
+            if(paidReroll){ setWallet(wallet -1); }
+            else{ setPaidReroll(true); }
+            rerollShop();
+        }
+        
     }
     function handleDragStart(index, source) {setDraggedId({index: index, source: source})}
     function handleDrop(targetIndex, targetSource) {
@@ -213,7 +222,10 @@ export default function Organiser(){
                 >
                     <div className='placeholder' />
                     {createSlots(3, shopCharacters, "shop", handleDragStart, handleDrop, setSelectedCharacter)}
-                    <img src='/images/retry.png' onClick={() => rerollShop()}/>
+                    <div className='retry-roll'>
+                        <img src='/images/retry.png' onClick={() => rerollTheShop()}/>
+                        {paidReroll && <span className='retry-roll-price'>1</span>}
+                    </div>
                     <span className="wallet">Wallet: {wallet} <img src='/images/gold.png' alt='Gold' /></span>
                 </div>
                 <div className="player-board">
