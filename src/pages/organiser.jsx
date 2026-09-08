@@ -14,8 +14,8 @@ export default function Organiser(){
     function rerollShop() {
         const factionCharacters = baseCharacters.filter(
         character =>
-            selectedFaction.includes(character.race) &&
-            character.tier <= tier
+            selectedFaction.includes(character.race) //&&
+            //character.tier <= tier
         );
         const options = []
 

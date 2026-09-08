@@ -6,7 +6,7 @@ import { getEnemyFaction } from "./Functions/BattleFunctions"
 
 export default function Layout(){
 
-    const startingAmount = 5;
+    const startingAmount = 500;
     const standardAmountFactions = 2;
     const startingWave = 1;
 

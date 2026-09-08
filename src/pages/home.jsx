@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink, useOutletContext, useNavigate } from "react-router"
 import { factions } from "../Data/Characters/characterManager";
 import '../App.css'
@@ -7,6 +8,7 @@ function App() {
         const navigate = useNavigate();
         const { setTeamPlayer, setBenchPlayer, selectedFaction, setSelectedFaction, setSelectedEnemyFaction, 
                 amountOfFactions, setAmountOfFactions, ConfirmFaction } = useOutletContext();
+        const [showHowTo, setShowHowTo] = React.useState(false)
 
         function selectFaction(faction){
                 let newFaction = null
@@ -34,20 +36,30 @@ function App() {
                 }
         return (
         <>
-        <div className="home-background">
-                <h1>Select your factions</h1>
-                <div className="chosen-faction-container">
-                        <p>
-                        Select {amountOfFactions} factions to start your run{selectedFaction.length < 1 ? "." : ":"}
-                        </p>
-                        {selectedFaction.length > 0 && chosenFactionElements()}
+        {showHowTo && (
+                <div
+                    className="overlay" 
+                    onClick={() => setShowHowTo(false)}
+                >
+                    <div>
+                        <h2>How to play</h2>
+                    </div>
                 </div>
-                <div className="faction-amount">
-                        <button>-</button>
-                        <span>{selectedFaction.length} / {amountOfFactions}</span>
-                        <button onClick={() => amountOfFactions < 5 ? setAmountOfFactions(amountOfFactions + 1) : null}>+</button>
-                </div>
-                        
+            )}
+                <div className="home-background">
+                        <h1>Select your factions</h1>
+                        <div className="chosen-faction-container">
+                                <p>
+                                Select {amountOfFactions} factions to start your run{selectedFaction.length < 1 ? "." : ":"}
+                                </p>
+                                {selectedFaction.length > 0 && chosenFactionElements()}
+                        </div>
+                        <div className="faction-amount">
+                                <button onClick={() => amountOfFactions > 1 ? setAmountOfFactions(amountOfFactions - 1) : null}>-</button>
+                                <span>{selectedFaction.length} / {amountOfFactions}</span>
+                                <button onClick={() => amountOfFactions < 5 ? setAmountOfFactions(amountOfFactions + 1) : null}>+</button>
+                        </div>
+                                
                 </div>
                 <nav className="faction-navigation">
 
@@ -66,19 +78,22 @@ function App() {
                         ))}
 
                 </nav>
-                {selectedFaction.length === amountOfFactions && (
-                <NavLink
-                        to="/Organiser"
-                        className="start-run"
-                        onClick={() => {
-                        setTeamPlayer([null, null, null, null, null, null, null, null])
-                        setBenchPlayer([null, null, null, null, null])
-                        ConfirmFaction(selectedFaction)
-                        }}
-                >
-                        Start Run
-                </NavLink>
-                )}
+                <div>
+                        <button onClick={() => setShowHowTo(true)}>How to play</button>
+                        {selectedFaction.length === amountOfFactions && (
+                        <NavLink
+                                to="/Organiser"
+                                className="start-run"
+                                onClick={() => {
+                                setTeamPlayer([null, null, null, null, null, null, null, null])
+                                setBenchPlayer([null, null, null, null, null])
+                                ConfirmFaction(selectedFaction)
+                                }}
+                        >
+                                Start Run
+                        </NavLink>)}
+                </div>
+                
         </>
         )
 }
