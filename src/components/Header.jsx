@@ -9,7 +9,11 @@ export default function Header({ resetGame }){
 
     return(
         <header>
-            <h1 className="game-title">Hold the line</h1>
+            <NavLink
+                to="/" className="game-title"
+                onClick={() => resetGame()}>
+                    Hold the line
+            </NavLink>
             <nav>
                 <NavLink 
                     to="/" className="nav-button"
@@ -20,12 +24,12 @@ export default function Header({ resetGame }){
                 <NavLink 
                     to="/" className="nav-button"
                     style={({isActive}) => isActive ? activeStyles : null}>
-                        TBA
+                        Shop
                 </NavLink>
                 <NavLink 
                     to="/battle" className="nav-button"
                     style={({isActive}) => isActive ? activeStyles : null}>
-                        TBA
+                        Battle
                 </NavLink>              
             </nav>
         </header>

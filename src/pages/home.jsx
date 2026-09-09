@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useOutletContext, useNavigate } from "react-router"
 import { factions } from "../Data/Characters/characterManager";
 import '../App.css'
+import HowToPlay from "../components/HowToPlay"
 
 function App() {
 
@@ -41,11 +42,9 @@ function App() {
                     className="overlay" 
                     onClick={() => setShowHowTo(false)}
                 >
-                    <div>
-                        <h2>How to play</h2>
-                    </div>
+                    <HowToPlay />
                 </div>
-            )}
+        )}
                 <div className="home-background">
                         <h1>Select your factions</h1>
                         <div className="chosen-faction-container">
@@ -55,7 +54,7 @@ function App() {
                                 {selectedFaction.length > 0 && chosenFactionElements()}
                         </div>
                         <div className="faction-amount">
-                                <button onClick={() => amountOfFactions > 1 ? setAmountOfFactions(amountOfFactions - 1) : null}>-</button>
+                                <button onClick={() => lowerAmountOfFactions()}>-</button>
                                 <span>{selectedFaction.length} / {amountOfFactions}</span>
                                 <button onClick={() => amountOfFactions < 5 ? setAmountOfFactions(amountOfFactions + 1) : null}>+</button>
                         </div>
@@ -78,8 +77,8 @@ function App() {
                         ))}
 
                 </nav>
-                <div>
-                        <button onClick={() => setShowHowTo(true)}>How to play</button>
+                <div className="bottom-buttons">
+                        <button className="start-run" onClick={() => setShowHowTo(true)}>How to play</button>
                         {selectedFaction.length === amountOfFactions && (
                         <NavLink
                                 to="/Organiser"

@@ -12,7 +12,8 @@
 }
 
 body {
-  margin: 0;
+  margin: 0;;
+  font-family: Arial, sans-serif;
 }
 
 .layout {
@@ -45,12 +46,11 @@ header {
   padding: 10px clamp(10px, 3vw, 20px);
 }
 
-header h1 {
-  margin: 0 0 0 10px;
-  font-size: clamp(16px, 2.5vw, 20px);
-  white-space: nowrap;
-  text-decoration: underline;
-  font-size: 800;
+.game-title {
+  color: black;
+  font-weight: bolder;
+  font-size: larger;
+  font-style: italic;
 }
 
 header nav {
@@ -454,7 +454,6 @@ footer {
     justify-content: center;
     align-items: center;
 
-    width: fit-content;
     min-width: 160px;
     min-height: 65px;
 
@@ -463,8 +462,6 @@ footer {
     padding: 10px clamp(14px, 3vw, 20px);
 
     white-space: nowrap;
-
-    margin: clamp(40px, 8vw, 80px) auto;
 }
 
 .faction-amount button{
@@ -539,21 +536,29 @@ footer {
 
 }
 
+.bottom-buttons{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 5vh;
+}
+
+.test{
+  background-color: wheat;
+}
 /* =========================
    CHARACTER DETAIL OVERLAY
 ========================= */
 
 .overlay {
-  position: fixed;
-  inset: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: rgba(0, 0, 0, 0.7);
-
-  z-index: 1000;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
 }
 
 
@@ -570,6 +575,7 @@ footer {
 
   background-color: white;
   border-radius: 15px;
+  margin-top: 40px;
 }
 
 .character-detail h2 {
@@ -605,6 +611,83 @@ footer {
     box-shadow:
         0 1px 4px rgba(40, 90, 130, 0.25),
         inset 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+/* =========================
+     How To Play
+========================= */
+
+.HowToPlay{
+  background-color: wheat;
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 40px;
+}
+
+.HowToPlay h1{
+  text-decoration: underline;
+}
+
+.HowToPlay p{
+  max-width: 40vw;
+  
+  padding-left: 20px;
+  text-indent: -15px;
+}
+
+.HowToPlay ul{
+  max-width: 50vw;
+}
+
+li{
+  padding-bottom: 10px;
+}
+
+.HowToPlay-image{
+  width: 60vw;
+  padding: 30px;
+}
+
+.card-explaination{
+  margin: 10px 0px;
+  width: 40vw;
+  display: flex;
+  gap: 20px;
+}
+
+.red{
+  background-color: red;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.purple{
+  background-color: purple;
+  color: white;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.green{
+  background-color: greenyellow;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.orange{
+  background-color: orange;
+  padding: 3px;
+  border-radius: 4px;
+}
+
+.yellow{
+  background-color: gold;
+  padding: 3px;
+  border-radius: 4px;
 }
 
 /* =========================
@@ -684,3 +767,4 @@ footer {
     justify-content: center;
   }
 }
+
