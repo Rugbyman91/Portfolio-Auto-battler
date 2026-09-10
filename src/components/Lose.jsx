@@ -6,14 +6,14 @@ export default function Lose()
 
     return(
         <div className="resolution-screen">
-            <h1 className="red">You lost</h1>
+            <h1 className="scarlet">You lost</h1>
             <h2>The enemy broke through our line</h2>
-            <p>Restart run to try with the same factions</p>
             <p>Reset to go back to faction selection</p>
+            <p>Restart to go back to faction selection with the same factions selected</p>
             <div className="bottom-buttons">
                 <NavLink 
-                    to="/Organiser" 
-                    onClick={() => RestartSameFactions()} 
+                    to="/organiser" 
+                    onClick={() => RestartSameFactions()}
                     className="start-run">
                         Restart run
                 </NavLink>

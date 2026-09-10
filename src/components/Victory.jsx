@@ -6,18 +6,20 @@ export default function Victory()
 
     return(
         <div className="resolution-screen">
-            <h1>Victory</h1>
+            <h1 className="goldenrod">Victory</h1>
             <h2>You have held the line againt 20 waves of enemies</h2>
-            <p>Restart run to restart with the same factions</p>
             <p>Reset to go back to faction selection</p>
-            <div className="bottom-buttons">
+            <p>Restart run to start back from the shop with the same factions (you & enemy)</p>
+            <div className="bottom-buttons2">
                 <NavLink 
-                    to="/Organiser" onClick={() => RestartSameFactions()}
+                    to="/organiser"
+                    onClick={() => RestartSameFactions()}
                     className="start-run">
                         Restart run
                 </NavLink>
                 <NavLink 
-                    to="/" onClick={() => ResetGame()}
+                    to="/" 
+                    onClick={() => ResetGame()}
                     className="start-run">
                         Reset
                 </NavLink>

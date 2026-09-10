@@ -36,7 +36,7 @@ main {
 ========================= */
 
 header {
-  min-height: 70px;
+  min-height: 80px;
   background-color: gray;
 
   display: flex;
@@ -790,3 +790,36 @@ li{
   margin-bottom: 20px;
 }
 
+.center{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.bottom-buttons2{
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.olive{  
+  background-color: olivedrab;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.scarlet{
+  background-color: red;
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.goldenrod{
+  background-color: gold;
+  padding: 14px;
+  border-radius: 8px;
+}

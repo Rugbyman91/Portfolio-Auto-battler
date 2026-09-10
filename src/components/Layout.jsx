@@ -1,14 +1,14 @@
 import React from "react"
-import { Outlet } from "react-router"
+import { Outlet, redirect } from "react-router"
 import Header from "./Header"
 import Footer from "./Footer"
 import { getEnemyFaction } from "./Functions/BattleFunctions"
 
 export default function Layout(){
 
-    const startingAmount = 4;
+    const startingAmount = 5000;
     const standardAmountFactions = 2;
-    const startingWave = 1;
+    const startingWave = 20;
 
     const [teamPlayer, setTeamPlayer] = React.useState([ null, null, null, null, null, null, null, null ])
     const [benchPlayer, setBenchPlayer] = React.useState([ null, null, null, null, null ])
@@ -17,6 +17,7 @@ export default function Layout(){
     const [wave, setWave] = React.useState(startingWave)
     const [selectedFaction, setSelectedFaction] = React.useState([])    
     const [amountOfFactions, setAmountOfFactions] = React.useState(standardAmountFactions);
+    const [ignoreBattleProtection, setIgnoreBattleProtection] = React.useState(false)
     const tier = getTier(wave)
     
 
@@ -43,7 +44,7 @@ export default function Layout(){
 
     function ConfirmFaction(factions){
         setSelectedEnemyFaction(getEnemyFaction(factions))
-    }
+    }   
 
     return(
         <div className="layout">
@@ -67,7 +68,9 @@ export default function Layout(){
                     setWave,
                     ConfirmFaction,
                     ResetGame,
-                    RestartSameFactions
+                    RestartSameFactions,
+                    ignoreBattleProtection,
+                    setIgnoreBattleProtection
                 }} />
             </main>
             <Footer />

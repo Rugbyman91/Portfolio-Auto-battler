@@ -15,7 +15,8 @@ export default function Battle(){
         selectedEnemyFaction,
         wave,
         setWallet,
-        setWave
+        setWave,
+        setIgnoreBattleProtection
     } = useOutletContext()
     const currentWave = getWave(wave, selectedEnemyFaction)
     const battleBoardRef = React.useRef(null)
@@ -38,8 +39,6 @@ export default function Battle(){
 
     React.useEffect(() => {
 
-        //setLost(false); setWon(false); setVictorious(false);   Test zonder
-
         let cancelled = false
         const sleep = ms => new Promise(r => setTimeout(r, ms))
 
@@ -61,6 +60,7 @@ export default function Battle(){
             if (cancelled) return
 
             if (result === "lose") {
+                setIgnoreBattleProtection(true)
                 setLost(true);
                 return
             }
@@ -76,6 +76,7 @@ export default function Battle(){
             }
 
             if (result === "win" && wave === 20) {
+                setIgnoreBattleProtection(true)
                 setVictorious(true)
                 return
             }

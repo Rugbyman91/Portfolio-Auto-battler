@@ -204,7 +204,6 @@ export default function Organiser(){
             })
         }
     }
-
     React.useEffect(() => {
         rerollShop()
     }, [])

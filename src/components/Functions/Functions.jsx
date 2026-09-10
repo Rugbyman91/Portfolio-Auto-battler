@@ -48,7 +48,6 @@ export function createBattleSlots(amount, team, source, indexes) {
     return Array.from({ length: amount }, (_, index) => {
         const character = team[index]
         const originalIndex = indexes[index]
-        console.log(character?.name, character?.evolved)
 
         return (
             <div
