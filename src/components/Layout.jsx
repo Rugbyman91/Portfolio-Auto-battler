@@ -6,9 +6,9 @@ import { getEnemyFaction } from "./Functions/BattleFunctions"
 
 export default function Layout(){
 
-    const startingAmount = 5000;
+    const startingAmount = 4;
     const standardAmountFactions = 2;
-    const startingWave = 20;
+    const startingWave = 1;
 
     const [teamPlayer, setTeamPlayer] = React.useState([ null, null, null, null, null, null, null, null ])
     const [benchPlayer, setBenchPlayer] = React.useState([ null, null, null, null, null ])
@@ -36,10 +36,10 @@ export default function Layout(){
     }
 
     function getTier(wave){
-        if (wave <= 4) return 1;
-        if (wave <= 7) return 2;
-        if (wave <= 10) return 3;
-        if (wave <= 13) return 4;
+        if (wave <= 2) return 1;
+        if (wave <= 5) return 2;
+        if (wave <= 8) return 3;
+        if (wave <= 10) return 4;
         return 5;
     }
 

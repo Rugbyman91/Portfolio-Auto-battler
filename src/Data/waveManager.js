@@ -113,7 +113,7 @@ const waveBlueprints = [
   },
   {
     id: 11,
-    gold: 8,
+    gold: 9,
     front: ["paladin", "knight", "monk", "rogue"],
     back: ["mage", "archer", "cleric", "mage"],
     evolvedFront: 3,
@@ -121,7 +121,7 @@ const waveBlueprints = [
   },
   {
     id: 12,
-    gold: 8,
+    gold: 9,
     front: ["paladin", "monk", "knight", "rogue"],
     back: ["mage", "archer", "cleric", "cleric"],
     evolvedFront: 3,
@@ -129,7 +129,7 @@ const waveBlueprints = [
   },
   {
     id: 13,
-    gold: 9,
+    gold: 10,
     front: ["paladin", "monk", "paladin", "rogue"],
     back: ["mage", "archer", "cleric", "mage"],
     evolvedFront: 4,
@@ -137,7 +137,7 @@ const waveBlueprints = [
   },
   {
     id: 14,
-    gold: 9,
+    gold: 10,
     front: ["paladin", "monk", "paladin", "monk"],
     back: ["mage", "summoner", "cleric", "archer"],
     evolvedFront: 4,
@@ -153,7 +153,7 @@ const waveBlueprints = [
   },
   {
     id: 16,
-    gold: 10,
+    gold: 11,
     front: ["paladin", "monk", "paladin", "monk"],
     back: ["summoner", "mage", "summoner", "cleric"],
     evolvedFront: 4,
@@ -161,7 +161,7 @@ const waveBlueprints = [
   },
   {
     id: 17,
-    gold: 10,
+    gold: 11,
     front: ["paladin", "monk", "paladin", "monk"],
     back: ["summoner", "summoner", "mage", "cleric"],
     evolvedFront: 4,
@@ -169,7 +169,7 @@ const waveBlueprints = [
   },
   {
     id: 18,
-    gold: 11,
+    gold: 12,
     front: ["paladin", "monk", "paladin", "monk"],
     back: ["summoner", "summoner", "cleric", "mage"],
     evolvedFront: 4,
@@ -177,7 +177,7 @@ const waveBlueprints = [
   },
   {
     id: 19,
-    gold: 11,
+    gold: 12,
     front: ["paladin", "monk", "paladin", "monk"],
     back: ["summoner", "summoner", "summoner", "cleric"],
     evolvedFront: 4,
@@ -185,7 +185,7 @@ const waveBlueprints = [
   },
   {
     id: 20,
-    gold: 14,
+    gold: 100,
     front: ["paladin", "monk", "paladin", "monk"],
     back: ["summoner", "summoner", "summoner", "summoner"],
     evolvedFront: 4,

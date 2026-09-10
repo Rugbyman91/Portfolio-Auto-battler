@@ -106,6 +106,7 @@ export default function Battle(){
             <h1>Battle Page</h1>
 
             <div className="character-container" ref={battleBoardRef}>
+                <h2>Wave: {wave}</h2>
 
                 {/* ENEMY: backline eerst, daarna frontline */}
                 <div className="player-board">
