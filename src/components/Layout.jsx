@@ -37,9 +37,10 @@ export default function Layout(){
 
     function getTier(wave){
         if (wave <= 4) return 1;
-        if (wave <= 8) return 2;
-        if (wave <= 12) return 3;
-        return 4;
+        if (wave <= 7) return 2;
+        if (wave <= 10) return 3;
+        if (wave <= 13) return 4;
+        return 5;
     }
 
     function ConfirmFaction(factions){
