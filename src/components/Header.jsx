@@ -22,7 +22,7 @@ export default function Header({ resetGame }){
                         Home
                 </NavLink>
                 <NavLink 
-                    to="/" className="nav-button"
+                    to="/Organiser" className="nav-button"
                     style={({isActive}) => isActive ? activeStyles : null}>
                         Shop
                 </NavLink>

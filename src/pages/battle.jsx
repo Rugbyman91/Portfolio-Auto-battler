@@ -4,17 +4,18 @@ import { useOutletContext, useNavigate } from 'react-router'
 import { getWave } from '../Data/waveManager.js'
 import { battleMechanics, createEnemyTeam, createBattleTeam } from '../components/Functions/BattleFunctions.jsx';
 import { animateAttack, animateHit } from '../components/Functions/BattleAnimations.jsx'
+import Lost from "../components/Lose.jsx"
+import Won from "../components/Win.jsx"
+import Victory from "../components/Victory.jsx"
 
 export default function Battle(){
-
-    const navigate = useNavigate()
+    
     const { 
         teamPlayer,
         selectedEnemyFaction,
         wave,
         setWallet,
-        setWave,
-        resetGame
+        setWave
     } = useOutletContext()
     const currentWave = getWave(wave, selectedEnemyFaction)
     const battleBoardRef = React.useRef(null)
@@ -25,6 +26,10 @@ export default function Battle(){
     const [enemyTeam, setEnemyTeam] = React.useState(() => {
         return createEnemyTeam(currentWave)
     })
+    const [lost, setLost] = React.useState(false)
+    const [won, setWon] = React.useState(false)
+    const [victorious, setVictorious] = React.useState(false)
+
     const battleSpeed = React.useRef(1)
     
     function changeSpeed(speed) {
@@ -32,6 +37,8 @@ export default function Battle(){
     }
 
     React.useEffect(() => {
+
+        //setLost(false); setWon(false); setVictorious(false);   Test zonder
 
         let cancelled = false
         const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -54,18 +61,23 @@ export default function Battle(){
             if (cancelled) return
 
             if (result === "lose") {
-                navigate("/");
-                resetGame();
+                setLost(true);
                 return
             }
 
-            if (result === "win") {
+            if (result === "win" && wave < 20) {
                 const reward = currentWave.gold
 
                 setWallet(prev => prev + reward)
                 setWave(prev => prev + 1)
 
-                navigate("/Organiser")
+                setWon(true)
+                return
+            }
+
+            if (result === "win" && wave === 20) {
+                setVictorious(true)
+                return
             }
         }
 
@@ -77,6 +89,19 @@ export default function Battle(){
 
     return(
         <>
+            {
+                lost && <div className='overlay'>
+                    <Lost />
+                </div>
+            }{
+                won && <div className='overlay'>
+                    <Won />
+                </div>
+            }{
+                victorious && <div className='overlay'>
+                    <Victory />
+                </div>
+            }
             <h1>Battle Page</h1>
 
             <div className="character-container" ref={battleBoardRef}>

@@ -5,25 +5,41 @@ import { getCharacterById, getEvoCharacterById, baseCharacters } from '../Data/C
 
 export default function Organiser(){
 
-    const { teamPlayer, benchPlayer, setTeamPlayer, setBenchPlayer, selectedFaction, wallet, setWallet, tier, setTier } = useOutletContext();
+    const { teamPlayer, benchPlayer, setTeamPlayer, setBenchPlayer, selectedFaction, wallet, setWallet, tier } = useOutletContext();
     const [selectedCharacter, setSelectedCharacter] = React.useState(null)
     const [ draggedId, setDraggedId ] = React.useState(null);
     const [ shopCharacters, setShopCharacters] = React.useState([])
     const [paidReroll, setPaidReroll] = React.useState(false);
     
     function rerollShop() {
+        
         const factionCharacters = baseCharacters.filter(
-        character =>
-            selectedFaction.includes(character.race) &&
-            character.tier <= tier
-        );
+            character =>
+                selectedFaction.includes(character.race) &&
+                character.tier <= tier
+        )
+
+        if (factionCharacters.length === 0) {
+            setShopCharacters([])
+            return
+        }
+
         const options = []
 
         for (let i = 0; i < 3; i++) {
-            const randomIndex = Math.floor( Math.random() * factionCharacters.length )
+            const randomIndex = Math.floor(Math.random() * factionCharacters.length)
             options.push(factionCharacters[randomIndex])
         }
-        if ( tier < 2 && !options.some(char => char.class === "knight")) { return rerollShop(); }
+
+        if (tier < 2 && !options.some(char => char.class === "knight")) {
+            const knight = factionCharacters.find(char => char.class === "knight")
+
+            if (knight) {
+                const randomSlot = Math.floor(Math.random() * 3)
+                options[randomSlot] = knight
+            }
+        }
+
         setShopCharacters(options)
     }
     function rerollTheShop(){

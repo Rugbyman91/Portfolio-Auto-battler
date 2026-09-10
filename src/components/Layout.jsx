@@ -20,14 +20,22 @@ export default function Layout(){
     const tier = getTier(wave)
     
 
-    function resetGame(){
+    function RestartSameFactions(){
         setTeamPlayer([null, null, null, null, null, null, null, null])
         setBenchPlayer([null, null, null, null, null])
-        setSelectedFaction([])
-        setSelectedEnemyFaction(null)
-        setAmountOfFactions(standardAmountFactions)
         setWallet(startingAmount)
         setWave(startingWave)
+    }
+    
+        React.useEffect(() => {
+        console.log("selectedFaction in Layout:", selectedFaction)
+    }, [selectedFaction])
+
+    function ResetGame(){
+        RestartSameFactions()
+        setSelectedEnemyFaction(null)
+        setAmountOfFactions(standardAmountFactions)
+        setSelectedFaction([])
     }
 
     function getTier(wave){
@@ -43,7 +51,7 @@ export default function Layout(){
 
     return(
         <div className="layout">
-            <Header resetGame={resetGame} />
+            <Header resetGame={ResetGame} />
             <main>
                 <Outlet context={{
                     teamPlayer,
@@ -62,7 +70,8 @@ export default function Layout(){
                     wave,
                     setWave,
                     ConfirmFaction,
-                    resetGame
+                    ResetGame,
+                    RestartSameFactions
                 }} />
             </main>
             <Footer />
