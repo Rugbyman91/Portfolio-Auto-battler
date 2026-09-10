@@ -26,10 +26,6 @@ export default function Layout(){
         setWallet(startingAmount)
         setWave(startingWave)
     }
-    
-        React.useEffect(() => {
-        console.log("selectedFaction in Layout:", selectedFaction)
-    }, [selectedFaction])
 
     function ResetGame(){
         RestartSameFactions()
