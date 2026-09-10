@@ -10,11 +10,11 @@ export const basePrice = {
 export const classStats = {
   knight: { tier: 1, hp: 100, strength: 20, evoHp: 175, evoStrength: 40 },
   archer: { tier: 1, hp: 70, strength: 25, evoHp: 110, evoStrength: 45 },
-  mage: { tier: 1, hp: 60, strength: 35, evoHp: 95, evoStrength: 60 },
-  cleric: { tier: 2, hp: 85, strength: 15, evoHp: 140, evoStrength: 30 },
-  rogue: { tier: 2, hp: 75, strength: 30, evoHp: 100, evoStrength: 65 },
-  paladin: { tier: 3, hp: 120, strength: 15, evoHp: 210, evoStrength: 30 },
-  monk: { tier: 3, hp: 90, strength: 25, evoHp: 150, evoStrength: 50 },
+  mage: { tier: 2, hp: 60, strength: 35, evoHp: 95, evoStrength: 60 },
+  cleric: { tier: 3, hp: 85, strength: 15, evoHp: 140, evoStrength: 30 },
+  rogue: { tier: 3, hp: 75, strength: 30, evoHp: 100, evoStrength: 65 },
+  paladin: { tier: 4, hp: 120, strength: 15, evoHp: 210, evoStrength: 30 },
+  monk: { tier: 2, hp: 90, strength: 25, evoHp: 150, evoStrength: 50 },
   summoner: { tier: 4, hp: 65, strength: 30, evoHp: 105, evoStrength: 50 },
 };
 

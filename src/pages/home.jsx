@@ -5,8 +5,7 @@ import '../App.css'
 import HowToPlay from "../components/HowToPlay"
 
 function App() {
-
-        const navigate = useNavigate();
+        
         const { setTeamPlayer, setBenchPlayer, selectedFaction, setSelectedFaction, setSelectedEnemyFaction, 
                 amountOfFactions, setAmountOfFactions, ConfirmFaction } = useOutletContext();
         const [showHowTo, setShowHowTo] = React.useState(false)

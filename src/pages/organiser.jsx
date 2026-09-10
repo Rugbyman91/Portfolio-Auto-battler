@@ -5,7 +5,7 @@ import { getCharacterById, getEvoCharacterById, baseCharacters } from '../Data/C
 
 export default function Organiser(){
 
-    const { teamPlayer, benchPlayer, setTeamPlayer, setBenchPlayer, selectedFaction, wallet, setWallet, tier } = useOutletContext();
+    const { teamPlayer, benchPlayer, setTeamPlayer, setBenchPlayer, selectedFaction, wallet, setWallet, tier, wave } = useOutletContext();
     const [selectedCharacter, setSelectedCharacter] = React.useState(null)
     const [ draggedId, setDraggedId ] = React.useState(null);
     const [ shopCharacters, setShopCharacters] = React.useState([])
@@ -231,6 +231,7 @@ export default function Organiser(){
                 </div>
             )}
             <div className="character-container">
+                <h2>Upcoming wave: {wave}</h2>
                 <div className="character-options"
                     onDragOver={(event) => event.preventDefault()}
                     onDrop={() => handleDrop(null, "shop")}
