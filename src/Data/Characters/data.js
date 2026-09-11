@@ -8,14 +8,14 @@ export const basePrice = {
 };
 
 export const classStats = {
-  knight: { tier: 1, hp: 100, strength: 20, evoHp: 175, evoStrength: 40 },
-  archer: { tier: 1, hp: 70, strength: 25, evoHp: 110, evoStrength: 45 },
-  mage: { tier: 2, hp: 60, strength: 35, evoHp: 95, evoStrength: 60 },
-  cleric: { tier: 3, hp: 85, strength: 15, evoHp: 140, evoStrength: 30 },
-  rogue: { tier: 3, hp: 75, strength: 30, evoHp: 100, evoStrength: 65 },
-  paladin: { tier: 4, hp: 120, strength: 15, evoHp: 210, evoStrength: 30 },
-  monk: { tier: 2, hp: 90, strength: 25, evoHp: 150, evoStrength: 50 },
-  summoner: { tier: 4, hp: 65, strength: 30, evoHp: 105, evoStrength: 50 },
+  knight: { tier: 1, hp: 40, strength: 12, evoHp: 65, evoStrength: 24 },
+  archer: { tier: 1, hp: 26, strength: 14, evoHp: 40, evoStrength: 25 },
+  mage: { tier: 2, hp: 23, strength: 18, evoHp: 35, evoStrength: 31 },
+  monk: { tier: 2, hp: 37, strength: 16, evoHp: 58, evoStrength: 30 },
+  cleric: { tier: 3, hp: 44, strength: 12, evoHp: 70, evoStrength: 22 },
+  rogue: { tier: 3, hp: 34, strength: 21, evoHp: 44, evoStrength: 42 },
+  paladin: { tier: 4, hp: 58, strength: 16, evoHp: 94, evoStrength: 32 },
+  summoner: { tier: 4, hp: 32, strength: 22, evoHp: 49, evoStrength: 35 },
 };
 
 export const raceModifiers = {
