@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
-    createBrowserRouter,
+    createHashRouter,
     createRoutesFromElements,
     Route,
     RouterProvider
@@ -13,7 +13,7 @@ import Organiser from './pages/organiser.jsx'
 import Battle from './pages/battle.jsx'
 import { ShopProtection, BattleProtection } from './components/RouteProtection.jsx'
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} >
       <Route index element={<Home />} />
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
         <Route path='/organiser' element={<Organiser />} />
       </Route>
       <Route element={<BattleProtection />}>
-        <Route path='battle' element={<Battle />} />
+        <Route path='/battle' element={<Battle />} />
       </Route>
     </Route>
   )

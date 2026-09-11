@@ -253,7 +253,7 @@ export default function Organiser(){
                     {createSlots(5, benchPlayer, "bench", handleDragStart, handleDrop, setSelectedCharacter)}
                     
                 </div>
-                {teamPlayer.some(character => character !== null) && <Link to="/Battle" className="start-battle">Start Battle</Link>}
+                {teamPlayer.some(character => character !== null) && <Link to="/battle" className="start-battle">Start Battle</Link>}
             </div>
             
         </>

@@ -10,7 +10,7 @@ export default function Win()
                 <p>We are safe for now, but a new army is already on the horizon</p>
             </div>
             <NavLink 
-                to="/Organiser"
+                to="/organiser"
                 className="start-run">
                     Continue to next fight
             </NavLink>
