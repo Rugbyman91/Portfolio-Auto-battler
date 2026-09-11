@@ -161,7 +161,7 @@ export const waveBlueprints = [
   },
   {
     id: 17,
-    gold: 11,
+    gold: 14,
     front: ["monk", "monk", "paladin", "paladin"],
     back: ["cleric", "summoner", "summoner", "summoner"],
     evolvedFront: 1,
@@ -177,7 +177,7 @@ export const waveBlueprints = [
   },
   {
     id: 19,
-    gold: 12,
+    gold: 14,
     front: ["monk", "paladin", "monk", "paladin"],
     back: ["cleric", "summoner", "mage", "summoner"],
     evolvedFront: 2,
