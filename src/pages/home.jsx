@@ -80,7 +80,7 @@ function App() {
                         <button className="start-run" onClick={() => setShowHowTo(true)}>How to play</button>
                         {selectedFaction.length === amountOfFactions && (
                         <NavLink
-                                to="/Organiser"
+                                to="/organiser"
                                 className="start-run"
                                 onClick={() => {
                                 setTeamPlayer([null, null, null, null, null, null, null, null])

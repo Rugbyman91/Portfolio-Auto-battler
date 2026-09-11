@@ -239,10 +239,10 @@ export default function Organiser(){
                     <div className='placeholder' />
                     {createSlots(3, shopCharacters, "shop", handleDragStart, handleDrop, setSelectedCharacter)}
                     <div className='retry-roll'>
-                        <img src='/images/retry.png' onClick={() => rerollTheShop()}/>
+                        <img src='./images/retry.png' onClick={() => rerollTheShop()}/>
                         {paidReroll && <span className='retry-roll-price'>1</span>}
                     </div>
-                    <span className="wallet">Wallet: {wallet} <img src='/images/gold.png' alt='Gold' /></span>
+                    <span className="wallet">Wallet: {wallet} <img src='./images/gold.png' alt='Gold' /></span>
                 </div>
                 <div className="player-board">
                     <div className="character-board">
@@ -253,7 +253,7 @@ export default function Organiser(){
                     {createSlots(5, benchPlayer, "bench", handleDragStart, handleDrop, setSelectedCharacter)}
                     
                 </div>
-                {teamPlayer.some(character => character !== null) && <Link to="/Battle" className="start-battle">Start Battle</Link>}
+                {teamPlayer.some(character => character !== null) && <Link to="/battle" className="start-battle">Start Battle</Link>}
             </div>
             
         </>
